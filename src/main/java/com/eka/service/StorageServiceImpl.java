@@ -22,26 +22,26 @@ public class StorageServiceImpl implements StorageService {
 
     @Override
     public void store(MultipartFile file) {
-        try {
-            if (file.isEmpty()) {
-                throw new StorageException("Failed to store empty file.");
-            }
-            Path destinationFile = this.rootLocation.resolve(
-                            Paths.get(file.getOriginalFilename()))
-                    .normalize().toAbsolutePath();
-            if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
-                // This is a security check
-                throw new StorageException(
-                        "Cannot store file outside current directory.");
-            }
-            try (InputStream inputStream = file.getInputStream()) {
-                Files.copy(inputStream, destinationFile,
-                        StandardCopyOption.REPLACE_EXISTING);
-            }
-        }
-        catch (Exception e) {
-            throw new StorageException("Failed to store file.", e);
-        }
+//        try {
+//            if (file.isEmpty()) {
+//                throw new StorageException("Failed to store empty file.");
+//            }
+//            Path destinationFile = this.rootLocation.resolve(
+//                            Paths.get(file.getOriginalFilename()))
+//                    .normalize().toAbsolutePath();
+//            if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
+//                // This is a security check
+//                throw new StorageException(
+//                        "Cannot store file outside current directory.");
+//            }
+//            try (InputStream inputStream = file.getInputStream()) {
+//                Files.copy(inputStream, destinationFile,
+//                        StandardCopyOption.REPLACE_EXISTING);
+//            }
+//        }
+//        catch (Exception e) {
+//            throw new StorageException("Failed to store file.", e);
+//        }
     }
 
     @Override
